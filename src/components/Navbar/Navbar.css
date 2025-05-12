@@ -70,7 +70,7 @@
 }
 
 .custom-navbar .navbar-brand {
-    color: #d1d5db !important;
+    color: #ffffff !important;
     font-weight: 700;
     font-size: 2rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -78,7 +78,7 @@
 
 .custom-navbar .nav-link-custom {
     background: transparent !important;
-    color: #d1d5db !important;
+    color: #ffffff !important;
     font-weight: 600;
     font-size: 1.1rem;
     padding: 0.8rem 1.5rem !important;
@@ -310,7 +310,7 @@
     }
 
     .custom-navbar {
-        background: rgba(17, 24, 39, 0.95) !important;
+        background: rgba(255, 255, 255, 0.95) !important;
         padding: 1rem 0;
     }
 
