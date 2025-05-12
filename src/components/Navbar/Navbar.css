@@ -4,7 +4,7 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    height: 80px; /* Fixed height for navbar */
+    height: auto; /* Changed from fixed height */
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -70,7 +70,7 @@
 }
 
 .custom-navbar .navbar-brand {
-    color: #ffffff !important;
+    color: #d1d5db !important;
     font-weight: 700;
     font-size: 2rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -78,7 +78,7 @@
 
 .custom-navbar .nav-link-custom {
     background: transparent !important;
-    color: #ffffff !important;
+    color: #d1d5db !important;
     font-weight: 600;
     font-size: 1.1rem;
     padding: 0.8rem 1.5rem !important;
@@ -106,7 +106,7 @@
 }
 
 .navbar-scrolled .nav-link-custom {
-    color: #2d3436 !important;
+    color: #333 !important;
     text-shadow: none;
 }
 
@@ -310,60 +310,60 @@
     }
 
     .custom-navbar {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
+        background: rgba(17, 24, 39, 0.95) !important;
         padding: 1rem 0;
     }
 
-    .custom-navbar .navbar-brand,
-    .custom-navbar .nav-link-custom {
-        color: #2d3436 !important;
-        text-shadow: none;
+    .navbar-scrolled {
+        background: rgba(255, 255, 255, 0.95) !important;
     }
 
-    .nav-link-custom {
-        color: #2d3436 !important;
-        text-shadow: none;
-        margin: 0.5rem 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav-link-custom:hover {
-        background: rgba(45, 52, 54, 0.1) !important;
-        border-color: rgba(45, 52, 54, 0.3);
-    }
-
-    .navbar-brand {
-        color: #2d3436 !important;
-        text-shadow: none;
-    }
-
-    .nav-button {
-        margin: 0.5rem 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav-button.login-btn {
-        border-color: #ff6b6b;
-        color: #ff6b6b !important;
-    }
-
-    .navbar-scrolled .nav-button.login-btn {
-        border-color: #2d3436;
-        color: #2d3436 !important;
-    }
-
-    .link-underline {
-        bottom: -2px;
-    }
-
-    .navbar-logo-wrapper {
-        width: 100px;
+    .navbar-collapse {
+        background: inherit;
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 10px;
+        transition: height 0.3s ease-in-out;
     }
     
-    .navbar-logo {
-        filter: none; /* Original color on mobile */
+    .nav-link-custom {
+        text-align: center;
+        margin: 0.5rem 0 !important;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
     }
+
+    .navbar-collapse.show .nav-link-custom {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .custom-toggler {
+        border: none !important;
+        padding: 0 !important;
+        z-index: 1100;
+    }
+    
+    .custom-toggler .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        transition: transform 0.3s ease;
+    }
+    
+    .navbar-scrolled .custom-toggler .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+    
+    .navbar-brand {
+        margin-left: 1rem;
+        position: relative;
+        z-index: 1100;
+    }
+
+    /* Animation for nav items */
+    .nav-link-custom:nth-child(1) { transition-delay: 0.1s; }
+    .nav-link-custom:nth-child(2) { transition-delay: 0.2s; }
+    .nav-link-custom:nth-child(3) { transition-delay: 0.3s; }
+    .nav-link-custom:nth-child(4) { transition-delay: 0.4s; }
+    .nav-link-custom:nth-child(5) { transition-delay: 0.5s; }
 }

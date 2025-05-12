@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import footerLogo from '../../assets/frugal-trail (3).svg';
+import footerLogo from '../../assets/frugal-trail.svg';
 import './Footer.css';
 
 const Footer = () => {

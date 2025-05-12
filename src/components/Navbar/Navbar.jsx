@@ -1,22 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
-import navLogo from '../../assets/frugal-trail (3).svg';
+import coloredLogo from '../../assets/frugal-trail (3).svg';
+import transparentLogo from '../../assets/frugal-trail.svg';
 
 import '../../styles/animations.css';
 import './Navbar.css';
 
 const NavigationBar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const location = useLocation();
+  const navRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
+
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setExpanded(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
+    };
   }, []);
+
+  const handleNavClick = (item, e) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      scrollToSection(item.toLowerCase());
+    }
+    setExpanded(false);
+  };
 
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
@@ -25,18 +48,12 @@ const NavigationBar = () => {
     }
   };
 
-  const handleNavClick = (item, e) => {
-    if (location.pathname === '/') {
-      e.preventDefault();
-      scrollToSection(item.toLowerCase());
-    }
-  };
-
   const handleLogoClick = (e) => {
     if (location.pathname === '/') {
       e.preventDefault();
       scrollToSection('hero');
     }
+    setExpanded(false);
   };
 
   return (
@@ -44,6 +61,9 @@ const NavigationBar = () => {
       expand="lg" 
       fixed="top" 
       className={`custom-navbar ${scrolled ? 'navbar-scrolled' : ''}`}
+      expanded={expanded}
+      onToggle={setExpanded}
+      ref={navRef}
     >
       <Container>
         <Navbar.Brand 
@@ -54,7 +74,7 @@ const NavigationBar = () => {
         >
           <div className="navbar-logo-wrapper">
             <img 
-              src={navLogo} 
+              src={scrolled ? coloredLogo : transparentLogo}
               alt="FrugalTrail Logo" 
               className="navbar-logo"
             />
