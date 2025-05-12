@@ -310,7 +310,8 @@
     }
 
     .custom-navbar {
-        background: rgba(255, 255, 255, 0.95) !important;
+        background: #343A40
+!important;
         padding: 1rem 0;
     }
 
