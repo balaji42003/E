@@ -67,7 +67,8 @@ Kadachanendal,<br/>Madurai - 625104</span>
           {[
             { platform: 'facebook', url: ' https://www.facebook.com/profile.php?id=61573447725702' },
             { platform: 'instagram', url: 'https://www.instagram.com/frugal_trail/' },
-            { platform: 'linkedin', url: 'https://www.linkedin.com/company/frugal-trail/?viewAsMember=true' }
+            { platform: 'linkedin', url: 'https://www.linkedin.com/company/frugal-trail/?viewAsMember=true' },
+             { platform: 'youtube', url: 'https://www.youtube.com/@frugaltrail' },
           ].map((social, index) => (
             <a 
               key={index} 

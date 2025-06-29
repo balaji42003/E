@@ -113,9 +113,7 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  <button className="btn btn-outline-primary mt-3 service-btn">
-                    Learn More
-                  </button>
+                  
                 </Card.Body>
               </Card>
             </Col>

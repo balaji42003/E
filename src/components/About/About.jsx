@@ -31,8 +31,6 @@ const About = () => {
   const [galleryVideos, setGalleryVideos] = useState([]);
 
   const stats = [
-    { number: '2+', text: 'Months of Operations', icon: '🌟' },
-    { number: '', text: 'Dozens of Trips Successfully Planned', icon: '🌍' },
     { number: '', text: 'Trusted by Families, Friends & First-Time Travelers', icon: '😊' },
     { number: '', text: 'Complete Guidance from Start to End', icon: '🏁' }
   ];
@@ -174,9 +172,14 @@ const About = () => {
   // Helper to get embeddable video URL
   function getEmbedUrl(url) {
     if (!url) return "";
-    // YouTube
+    // YouTube normal
     if (url.includes("youtube.com/watch?v=")) {
       const id = url.split("v=")[1].split("&")[0];
+      return `https://www.youtube.com/embed/${id}`;
+    }
+    // YouTube short
+    if (url.includes("youtube.com/shorts/")) {
+      const id = url.split("youtube.com/shorts/")[1].split(/[?&/]/)[0];
       return `https://www.youtube.com/embed/${id}`;
     }
     if (url.includes("youtu.be/")) {

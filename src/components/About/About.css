@@ -177,6 +177,7 @@
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     animation: float 5s ease-in-out infinite;
     animation-delay: 1s;
+    
 }
 
 /* Stats Grid - More Compact */
@@ -184,7 +185,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem; /* Reduced gap */
-    margin-top: 1rem;
+    margin-top: 120px;
 }
 
 .stat-card {
@@ -194,6 +195,7 @@
     text-align: center;
     transition: transform 0.3s ease;
     box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    height: 200px;
 }
 
 .stat-card:hover {

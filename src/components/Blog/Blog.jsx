@@ -45,48 +45,48 @@ const Blog = () => {
   const [firebaseBlogsMeta, setFirebaseBlogsMeta] = useState([]);
 
   const allBlogPosts = [
-    {
-      image: image2,
-      category: "Travel Guide",
-      title: "Planning a Europe Trip from Madurai? Read This First",
-      excerpt:
-        "A step-by-step breakdown of what you need to know about planning your European adventure from South India...",
-    },
-    {
-      image: image7,
-      category: "Visa Tips",
-      title: "Visa Rejection? Here's How to Avoid the Common Mistakes",
-      excerpt:
-        "Real examples and solutions from past client experiences to help you secure your visa approval...",
-    },
-    {
-      image: image11,
-      category: "Budget Travel",
-      title: "What ₹1 Lakh Can Get You in Southeast Asia",
-      excerpt:
-        "Breaking down destinations that fit the budget, with real costs and travel tips...",
-    },
-    {
-      image: image15,
-      category: "Cultural Travel",
-      title: "Hidden Temples of Tamil Nadu",
-      excerpt:
-        "Discover the ancient architectural marvels and spiritual sanctuaries across Tamil Nadu's lesser-known regions...",
-    },
-    {
-      image: image22,
-      category: "Adventure",
-      title: "Trekking in the Western Ghats",
-      excerpt:
-        "A comprehensive guide to the best trekking routes in the Western Ghats, from beginner trails to challenging peaks...",
-    },
-    {
-      image: image28,
-      category: "Photography",
-      title: "Best Photo Spots in South India",
-      excerpt:
-        "Top locations for capturing the perfect shots of South India's diverse landscapes and cultural heritage...",
-    },
+    // {
+    //   image: image2,
+    //   category: "Travel Guide",
+    //   title: "Planning a Europe Trip from Madurai? Read This First",
+    //   excerpt:
+    //     "A step-by-step breakdown of what you need to know about planning your European adventure from South India...",
+    // },
+    // {
+    //   image: image7,
+    //   category: "Visa Tips",
+    //   title: "Visa Rejection? Here's How to Avoid the Common Mistakes",
+    //   excerpt:
+    //     "Real examples and solutions from past client experiences to help you secure your visa approval...",
+    // },
+    // {
+    //   image: image11,
+    //   category: "Budget Travel",
+    //   title: "What ₹1 Lakh Can Get You in Southeast Asia",
+    //   excerpt:
+    //     "Breaking down destinations that fit the budget, with real costs and travel tips...",
+    // },
+    // {
+    //   image: image15,
+    //   category: "Cultural Travel",
+    //   title: "Hidden Temples of Tamil Nadu",
+    //   excerpt:
+    //     "Discover the ancient architectural marvels and spiritual sanctuaries across Tamil Nadu's lesser-known regions...",
+    // },
+    // {
+    //   image: image22,
+    //   category: "Adventure",
+    //   title: "Trekking in the Western Ghats",
+    //   excerpt:
+    //     "A comprehensive guide to the best trekking routes in the Western Ghats, from beginner trails to challenging peaks...",
+    // },
+    // {
+    //   image: image28,
+    //   category: "Photography",
+    //   title: "Best Photo Spots in South India",
+    //   excerpt:
+    //     "Top locations for capturing the perfect shots of South India's diverse landscapes and cultural heritage...",
+    // },
   ];
 
   const displayedPosts = showAll ? allBlogPosts : allBlogPosts.slice(0, 3);
