@@ -604,16 +604,33 @@
   z-index: 2;
 }
 
+.gallery-toggle-btns.mobile-toggle-btns {
+  display: none !important;
+}
+.gallery-toggle-btns.desktop-toggle-btns {
+  display: flex !important;
+}
+
 @media (max-width: 767px) {
   .gallery-section {
     text-align: center;
   }
-  .gallery-toggle-btns {
+  .gallery-section .gallery-toggle-btns {
     position: static !important;
     transform: none !important;
-    margin-bottom: 12px;
+    margin-top: 12px;
+    margin-bottom: 0;
     width: 100%;
     justify-content: center;
+    display: flex;
+    order: 2;
+  }
+  .gallery-section .gallery-toggle-btns button {
+    padding: 6px 14px !important;
+    font-size: 0.95rem !important;
+    border-radius: 12px !important;
+    min-width: 70px;
+    margin: 0 2px;
   }
   .gallery-section .section-title,
   .gallery-section .section-subtitle {

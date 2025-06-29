@@ -407,6 +407,7 @@ Whether you're exploring nearby states or applying for a Schengen visa — we're
           {/* Gallery Section */}
           <div className="gallery-section mt-5 text-center">
   <div
+    className="gallery-header-flex"
     style={{
       display: 'flex',
       alignItems: 'center',
@@ -416,15 +417,73 @@ Whether you're exploring nearby states or applying for a Schengen visa — we're
       width: '100%',
     }}
   >
-    {/* Buttons at very left */}
-    <div style={{
-      position: 'absolute',
-      left: 0,
-      top: '50%',
-      transform: 'translateY(-50%)',
-      display: 'flex',
-      zIndex: 2
-    }}>
+    {/* Heading and subtitle centered */}
+    <div style={{ margin: '0 auto', textAlign: 'left', width: '100%', maxWidth: 700 }}>
+      <span className="section-subtitle" style={{ display: 'block', textAlign: 'left', width: '100%' }}>
+        {showVideos ? "Video Gallery" : "Photo Gallery"}
+      </span>
+      <h2 className="section-title mb-4" style={{ marginBottom: 0, textAlign: 'left', width: '100%' }}>
+        {showVideos ? "Explore Our Travel Videos" : "Explore Our Travel Memories"}
+      </h2>
+      {/* Toggle buttons: visible below heading only on mobile */}
+      <div
+        className="gallery-toggle-btns mobile-toggle-btns"
+        style={{
+          display: 'none',
+          marginTop: 12,
+          justifyContent: 'center',
+        }}
+      >
+        <button
+          onClick={() => setShowVideos(false)}
+          style={{
+            background: !showVideos ? '#1ABC9C' : '#eee',
+            color: !showVideos ? 'white' : '#1ABC9C',
+            border: 'none',
+            borderRadius: '20px 0 0 20px',
+            padding: '6px 14px',
+            fontWeight: 600,
+            cursor: 'pointer',
+            outline: 'none',
+            fontSize: '0.95rem',
+            minWidth: 70,
+            marginRight: 2,
+          }}
+        >
+          Photos
+        </button>
+        <button
+          onClick={() => setShowVideos(true)}
+          style={{
+            background: showVideos ? '#1ABC9C' : '#eee',
+            color: showVideos ? 'white' : '#1ABC9C',
+            border: 'none',
+            borderRadius: '0 20px 20px 0',
+            padding: '6px 14px',
+            fontWeight: 600,
+            cursor: 'pointer',
+            outline: 'none',
+            fontSize: '0.95rem',
+            minWidth: 70,
+            marginLeft: 2,
+          }}
+        >
+          Videos
+        </button>
+      </div>
+    </div>
+    {/* Toggle buttons: visible at left only on desktop */}
+    <div
+      className="gallery-toggle-btns desktop-toggle-btns"
+      style={{
+        position: 'absolute',
+        left: 0,
+        top: '50%',
+        transform: 'translateY(-50%)',
+        display: 'flex',
+        zIndex: 2,
+      }}
+    >
       <button
         onClick={() => setShowVideos(false)}
         style={{
@@ -457,15 +516,6 @@ Whether you're exploring nearby states or applying for a Schengen visa — we're
       >
         Videos
       </button>
-    </div>
-    {/* Heading and subtitle centered */}
-    <div style={{ margin: '0 auto', textAlign: 'left' }}>
-      <span className="section-subtitle" style={{ display: 'block', textAlign: 'left' }}>
-        {showVideos ? "Video Gallery" : "Photo Gallery"}
-      </span>
-      <h2 className="section-title mb-4" style={{ marginBottom: 0, textAlign: 'left' }}>
-        {showVideos ? "Explore Our Travel Videos" : "Explore Our Travel Memories"}
-      </h2>
     </div>
   </div>
   <p className="text-muted mb-4">
