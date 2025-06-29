@@ -77,7 +77,7 @@ const Hero = () => {
                   className="btn btn-light btn-lg me-3 hover-scale"
                   onClick={handleExploreTours}
                 >
-                  Explore Tours
+                  Explore
                 </button>
                 <button 
                   className="btn btn-outline-light btn-lg hover-scale"
