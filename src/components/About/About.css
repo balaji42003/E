@@ -589,3 +589,39 @@
     padding-top: 2rem !important;
     padding-bottom: 2rem !important;
 }
+
+/* Responsive fix for gallery toggle buttons and heading */
+.gallery-section {
+  position: relative;
+}
+
+.gallery-toggle-btns {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  z-index: 2;
+}
+
+@media (max-width: 767px) {
+  .gallery-section {
+    text-align: center;
+  }
+  .gallery-toggle-btns {
+    position: static !important;
+    transform: none !important;
+    margin-bottom: 12px;
+    width: 100%;
+    justify-content: center;
+  }
+  .gallery-section .section-title,
+  .gallery-section .section-subtitle {
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .gallery-section > div {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+}
