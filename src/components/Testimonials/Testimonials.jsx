@@ -6,6 +6,7 @@ import ayyappaImage from '../../assets/Ayyappa.jpg';
 import './Testimonials.css';
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref as dbRef, onValue } from "firebase/database";
+import LoadingSpinner from '../../LoadingSpinner';
 
 // Firebase config
 const firebaseConfig = {
@@ -26,6 +27,7 @@ const Testimonials = () => {
   const [showAll, setShowAll] = useState(false);
   const [expandedIndexes, setExpandedIndexes] = useState(new Set());
   const [testimonials, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const refTestimonials = dbRef(database, "testimonials");
@@ -42,7 +44,8 @@ const Testimonials = () => {
       } else {
         setTestimonials([]);
       }
-    });
+      setLoading(false);
+    }, () => setLoading(false));
     return () => unsubscribe();
   }, []);
 
@@ -80,92 +83,98 @@ const Testimonials = () => {
           <span className="section-subtitle">Testimonials</span>
           <h2 className="section-title"> What Our Travelers Say</h2>
           <div className="title-underline mx-auto"></div>
-          <p className="text-muted mt-3">Real stories from happy travelers! Hear how FrugalTrail made their trips seamless, stress-free, and budget-friendly.</p>
         </div>
-
-        <Row className="testimonials-grid">
-          {displayedTestimonials.map((testimonial, index) => (
-            <Col lg={4} key={testimonial.id || index} className="mb-4">
-              <Card 
-                className="testimonial-card border-0 h-100 shadow-hover"
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-              >
-                <Card.Body className="p-4">
-                  <div className="quote-icon">❝</div>
-                  <div className="testimonial-content">
-                    <div className="testimonial-header mb-4">
-                      <div className="d-flex align-items-center">
-                        <div className="testimonial-img-wrapper">
-                          <img 
-                            src={testimonial.image} 
-                            alt={testimonial.name} 
-                            className="testimonial-img"
-                          />
-                        </div>
-                        <div className="ms-3">
-                          <h5 className="mb-1 fw-bold">{testimonial.name}</h5>
+        {loading ? (
+          <LoadingSpinner message="Just a minute..." />
+        ) : testimonials.length === 0 ? (
+          <div style={{ color: "#1ABC9C", textAlign: "center", fontWeight: 600, fontSize: "1.1rem", padding: "40px 0" }}>
+            No testimonials available.
+          </div>
+        ) : (
+          <Row className="testimonials-grid">
+            {displayedTestimonials.map((testimonial, index) => (
+              <Col lg={4} key={testimonial.id || index} className="mb-4">
+                <Card 
+                  className="testimonial-card border-0 h-100 shadow-hover"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                >
+                  <Card.Body className="p-4">
+                    <div className="quote-icon">❝</div>
+                    <div className="testimonial-content">
+                      <div className="testimonial-header mb-4">
+                        <div className="d-flex align-items-center">
+                          <div className="testimonial-img-wrapper">
+                            <img 
+                              src={testimonial.image} 
+                              alt={testimonial.name} 
+                              className="testimonial-img"
+                            />
+                          </div>
+                          <div className="ms-3">
+                            <h5 className="mb-1 fw-bold">{testimonial.name}</h5>
+                          </div>
                         </div>
                       </div>
+                      <div
+                        className={`testimonial-quote ${expandedIndexes.has(index) ? 'expanded' : ''}`}
+                        style={{
+                          fontWeight: "bold",
+                          fontFamily: "cursive",
+                          color: "black",
+                          fontSize: "1.2rem",
+                          margin: "10px 0",
+                        }}
+                      >
+                        {testimonial.quote}
+                      </div>
+                      <p
+                        className={`testimonial-text ${expandedIndexes.has(index) ? 'expanded' : ''}`}
+                        style={{
+                          whiteSpace: "pre-line",
+                          color: "#333",
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {testimonial.paragraph}
+                      </p>
+                      <button 
+                        onClick={() => handleReadMore(index)}
+                        style={{
+                          background: 'none',
+                          border: 'none',
+                          color: ' #1ABC9C',
+                          fontWeight: '600',
+                          fontSize: '16px',
+                          cursor: 'pointer',
+                          padding: '5px 0',
+                          marginTop: '10px'
+                        }}
+                      >
+                        {expandedIndexes.has(index) ? 'Read Less' : 'Read More'}
+                        <i 
+                          className={`bi bi-arrow-${expandedIndexes.has(index) ? 'up' : 'down'}`}
+                          style={{ marginLeft: '5px' }}
+                        ></i>
+                      </button>
+                      <div className="rating mb-3">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <span key={i} className="star">⭐</span>
+                        ))}
+                      </div>
+                      <div className="testimonial-footer">
+                        <span className="verified-badge">
+                          <i className="bi bi-patch-check-fill text-primary me-2"></i>
+                          Verified Travel
+                        </span>
+                      </div>
                     </div>
-                    <div
-                      className={`testimonial-quote ${expandedIndexes.has(index) ? 'expanded' : ''}`}
-                      style={{
-                        fontWeight: "bold",
-                        fontFamily: "cursive",
-                        color: "black",
-                        fontSize: "1.2rem",
-                        margin: "10px 0",
-                      }}
-                    >
-                      {testimonial.quote}
-                    </div>
-                    <p
-                      className={`testimonial-text ${expandedIndexes.has(index) ? 'expanded' : ''}`}
-                      style={{
-                        whiteSpace: "pre-line",
-                        color: "#333",
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      {testimonial.paragraph}
-                    </p>
-                    <button 
-                      onClick={() => handleReadMore(index)}
-                      style={{
-                        background: 'none',
-                        border: 'none',
-                        color: ' #1ABC9C',
-                        fontWeight: '600',
-                        fontSize: '16px',
-                        cursor: 'pointer',
-                        padding: '5px 0',
-                        marginTop: '10px'
-                      }}
-                    >
-                      {expandedIndexes.has(index) ? 'Read Less' : 'Read More'}
-                      <i 
-                        className={`bi bi-arrow-${expandedIndexes.has(index) ? 'up' : 'down'}`}
-                        style={{ marginLeft: '5px' }}
-                      ></i>
-                    </button>
-                    <div className="rating mb-3">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <span key={i} className="star">⭐</span>
-                      ))}
-                    </div>
-                    <div className="testimonial-footer">
-                      <span className="verified-badge">
-                        <i className="bi bi-patch-check-fill text-primary me-2"></i>
-                        Verified Travel
-                      </span>
-                    </div>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        )}
 
         <div className="text-center mt-5" data-aos="fade-up">
           <button 
